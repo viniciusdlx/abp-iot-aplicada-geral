@@ -18,7 +18,6 @@ export default function Listagem() {
     axios
       .get(process.env.NEXT_PUBLIC_ROUTE_READ || "")
       .then((res: any) => {
-        console.log("res -> ", res);
         setData(res?.data?.feeds);
       })
       .catch((err) => {
