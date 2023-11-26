@@ -12,7 +12,7 @@ import axios from "axios";
 
 export default function Listagem() {
   const [data, setData] = useState([] as any[]);
-  const TABLE_HEAD = ["Nome", "Email", "Biometria", "RFIDD"];
+  const TABLE_HEAD = ["Senha", "Biometria", "RFID"];
 
   useEffect(() => {
     axios
@@ -39,11 +39,14 @@ export default function Listagem() {
               </Link>
 
               <Card className="h-full w-full">
-                {/* <table className="w-full min-w-max table-auto text-left">
+                <table className="w-full min-w-max table-auto text-left">
                   <thead>
                     <tr>
                       {TABLE_HEAD.map((head) => (
-                        <th key={head} className="border-b border-blue-gray-100 bg-blue-gray-50 p-4">
+                        <th
+                          key={head}
+                          className="border-b border-blue-gray-100 bg-blue-gray-50 p-4"
+                        >
                           <Typography
                             variant="small"
                             color="blue-gray"
@@ -56,33 +59,56 @@ export default function Listagem() {
                     </tr>
                   </thead>
                   <tbody>
-                    {data && data.map(({ field1, email, biometry, rfid }, index) => (
-                      <tr key={field1} className="even:bg-blue-gray-50/50">
-                        <td className="p-4">
-                          <Typography variant="small" color="blue-gray" className="font-normal">
-                            {field1}
-                          </Typography>
-                        </td>
-                        <td className="p-4">
-                          <Typography variant="small" color="blue-gray" className="font-normal">
-                            {email}
-                          </Typography>
-                        </td>
-                        <td className="p-4">
-                          <Typography variant="small" color="blue-gray" className="font-normal">
-                            {biometry}
-                          </Typography>
-                        </td>
-                        <td className="p-4">
-                          <Typography variant="small" color="blue-gray" className="font-normal">
-                            {rfid}
-                          </Typography>
-                        </td>
-                      </tr>
-                    ))}
+                    {data &&
+                      data.map(({ field2, field3, field4 }, index) => {
+                        const onlyShowsIfAllFull = field2 && field3 && field4;
+                        const withoutNulls =
+                          field2 != "null" &&
+                          field3 != "null" &&
+                          field4 != "null";
+
+                        if (onlyShowsIfAllFull && withoutNulls)
+                          return (
+                            <tr
+                              key={field2}
+                              className="even:bg-blue-gray-50/50"
+                            >
+                              <td className="p-4">
+                                <Typography
+                                  variant="small"
+                                  color="blue-gray"
+                                  className="font-normal"
+                                >
+                                  {field2}
+                                </Typography>
+                              </td>
+                              <td className="p-4">
+                                <Typography
+                                  variant="small"
+                                  color="blue-gray"
+                                  className="font-normal"
+                                >
+                                  {field3}
+                                </Typography>
+                              </td>
+                              <td className="p-4">
+                                <Typography
+                                  variant="small"
+                                  color="blue-gray"
+                                  className="font-normal"
+                                >
+                                  {field4}
+                                </Typography>
+                              </td>
+                            </tr>
+                          );
+                      })}
                   </tbody>
-                </table> */}
-                <iframe
+                </table>
+
+                {/* MOSTRA PADRAO THINGSPEAK */}
+
+                {/* <iframe
                   width="450"
                   height="260"
                   style={{ border: "1px solid #cccccc" }}
@@ -99,7 +125,7 @@ export default function Listagem() {
                   height="260"
                   style={{ border: "1px solid #cccccc" }}
                   src="https://thingspeak.com/channels/2354855/charts/4?bgcolor=%23ffffff&color=%23d62020&dynamic=true&results=60&type=line&update=15"
-                />
+                /> */}
               </Card>
             </CardBody>
           </Card>
