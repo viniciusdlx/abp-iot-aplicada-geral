@@ -43,6 +43,7 @@ export default function CheckoutForm() {
       api_key: "7GNSQB81HFDQPX5C",
       field5: values.cadastro ? "S" : "N",
       field1: values.usuario || usuario,
+      field6: 0,
     } as any;
 
     axios
