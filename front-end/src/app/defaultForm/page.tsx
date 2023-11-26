@@ -14,17 +14,9 @@ import axios from "axios";
 import Link from "next/link";
 import Swal from "sweetalert2";
 
-function formatExpires(value: string) {
-  return value
-    .replace(/[^0-9]/g, "")
-    .replace(/^([2-9])$/g, "0$1")
-    .replace(/^(1{1})([3-9]{1})$/g, "0$1/$2")
-    .replace(/^0{1,}/g, "0")
-    .replace(/^([0-1]{1}[0-9]{1})([0-9]{1,2}).*/g, "$1/$2");
-}
-
 export default function CheckoutForm() {
   const [loading, setLoading] = useState(false);
+  const [usuario, setUsuario] = useState(false);
   const { register, setValue, handleSubmit } = useForm();
 
   useEffect(() => {
@@ -36,8 +28,9 @@ export default function CheckoutForm() {
       .get(process.env.NEXT_PUBLIC_ROUTE_READ || "")
       .then((res: any) => {
         const length = res?.data?.feeds?.length;
-        console.log("res -> ", res?.data?.feeds[length - 1].field1);
-        setValue("usuario", res?.data?.feeds[length - 1].field1 == 1);
+        setValue("cadastro", res?.data?.feeds[length - 1].field5 == "S");
+        setValue("usuario", res?.data?.feeds[length - 1].field1);
+        setUsuario(res?.data?.feeds[length - 1].field1);
       })
       .catch((err) => {
         console.log(err);
@@ -46,13 +39,14 @@ export default function CheckoutForm() {
 
   const onSubmit = (values: any) => {
     setLoading(true);
-    values = {
+    let rep = {
       api_key: "7GNSQB81HFDQPX5C",
-      field1: values.usuario ? 1 : 0,
-    };
-    console.log("value", values);
+      field5: values.cadastro ? "S" : "N",
+      field1: values.usuario || usuario,
+    } as any;
+
     axios
-      .post(process.env.NEXT_PUBLIC_ROUTE_WRITE || "", values)
+      .post(process.env.NEXT_PUBLIC_ROUTE_WRITE || "", rep)
       .then((res) => {
         console.log(res);
         if (res?.data == 0) {
@@ -95,11 +89,21 @@ export default function CheckoutForm() {
                 color="blue-gray"
                 className="mb-2 font-medium"
               >
+                Olá {usuario}!
+              </Typography>
+              <Typography
+                variant="h1"
+                color="blue-gray"
+                className="mb-2 font-medium"
+              >
                 Está em modo de cadastro?
               </Typography>
+              <div>
+                <Input {...register("usuario")} label="Nome de usuário" />
+              </div>
               <div className="grid place-content-center h-48">
                 <Switch
-                  {...register("usuario")}
+                  {...register("cadastro")}
                   color="green"
                   ripple={false}
                   className="h-full w-full checked:bg-[#2ec946]"
