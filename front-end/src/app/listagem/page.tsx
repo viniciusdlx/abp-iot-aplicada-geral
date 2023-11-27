@@ -12,13 +12,14 @@ import axios from "axios";
 
 export default function Listagem() {
   const [data, setData] = useState([] as any[]);
-  const TABLE_HEAD = ["Senha", "Biometria", "RFID"];
+  const TABLE_HEAD = ["Nome do usuário", "Senha", "Biometria", "RFID", "Etapa atual"];
 
   useEffect(() => {
     axios
       .get(process.env.NEXT_PUBLIC_ROUTE_READ || "")
       .then((res: any) => {
-        setData(res?.data?.feeds);
+        const length = res?.data?.feeds?.length;
+        setData([res?.data?.feeds[length - 1]]);
       })
       .catch((err) => {
         console.log(err);
@@ -28,7 +29,7 @@ export default function Listagem() {
   return (
     <ThemeProvider>
       <main className="flex min-h-screen flex-col items-center justify-between p-12">
-        <div className="z-10 max-w-[690px] w-full items-center justify-between font-mono text-sm lg:flex">
+        <div className="z-10 max-w-[870px] w-full items-center justify-between font-mono text-sm lg:flex">
           <Card className="w-full px-24 py-4">
             <CardBody>
               <Link href="/cadastro">
@@ -59,48 +60,81 @@ export default function Listagem() {
                   </thead>
                   <tbody>
                     {data &&
-                      data.map(({ field2, field3, field4 }, index) => {
+                      data.map(({ field1, field2, field3, field4, field5, field6 }, index) => {
                         const onlyShowsIfAllFull = field2 && field3 && field4;
                         const withoutNulls =
                           field2 != "null" &&
                           field3 != "null" &&
                           field4 != "null";
 
-                        if (onlyShowsIfAllFull && withoutNulls)
-                          return (
-                            <tr
-                              key={field2}
-                              className="even:bg-blue-gray-50/50"
-                            >
-                              <td className="p-4">
-                                <Typography
-                                  variant="small"
-                                  color="blue-gray"
-                                  className="font-normal"
-                                >
-                                  {field2}
-                                </Typography>
-                              </td>
-                              <td className="p-4">
-                                <Typography
-                                  variant="small"
-                                  color="blue-gray"
-                                  className="font-normal"
-                                >
-                                  {field3}
-                                </Typography>
-                              </td>
-                              <td className="p-4">
-                                <Typography
-                                  variant="small"
-                                  color="blue-gray"
-                                  className="font-normal"
-                                >
-                                  {field4}
-                                </Typography>
-                              </td>
-                            </tr>
-                          );
+                        let etapa = "Ainda não desbloqueado";
+
+                        switch (field6) {
+                          case 1:
+                            etapa = "RFID";
+                            break;
+                          case 2:
+                            etapa = "Teclado";
+                            break;
+                          case 3:
+                            etapa = "Biometria";
+                            break;
+                          default:
+                            break;
+                        }
+
+                        return (
+                          <tr
+                            key={field2}
+                            className="even:bg-blue-gray-50/50"
+                          >
+                            <td className="p-4">
+                              <Typography
+                                variant="small"
+                                color="blue-gray"
+                                className="font-normal"
+                              >
+                                {field1}
+                              </Typography>
+                            </td>
+                            <td className="p-4">
+                              <Typography
+                                variant="small"
+                                color="blue-gray"
+                                className="font-normal"
+                              >
+                                {field2}
+                              </Typography>
+                            </td>
+                            <td className="p-4">
+                              <Typography
+                                variant="small"
+                                color="blue-gray"
+                                className="font-normal"
+                              >
+                                {field3}
+                              </Typography>
+                            </td>
+                            <td className="p-4">
+                              <Typography
+                                variant="small"
+                                color="blue-gray"
+                                className="font-normal"
+                              >
+                                {field4}
+                              </Typography>
+                            </td>
+                            <td className="p-4">
+                              <Typography
+                                variant="small"
+                                color="blue-gray"
+                                className="font-normal"
+                              >
+                                {etapa}
+                              </Typography>
+                            </td>
+                          </tr>
+                        );
                       })}
                   </tbody>
                 </table>
