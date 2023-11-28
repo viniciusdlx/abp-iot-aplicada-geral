@@ -1,6 +1,7 @@
 ## Repositório dedicado à Avaliação Baseada em Problema da disciplina de IOT APLICADA do curso de Engenharia da Computação 2023-2
 
-### Descrição do problema: Um cofre que possui 3 mecanismos para abertura da porta, sendo eles: inserir a senha numérica, leitura do RFID e leitura da biometria. Após o cadastro dessas credenciais, ao ser necessário abrir o cofre, precisará informar essas credenciais corretamente. 
+### Descrição do problema: 
+- O projeto envolve a criação de um cofre inovador, dotado de três métodos distintos para abrir a porta. Os mecanismos incluem inserção de senha numérica, leitura de cartão RFID e reconhecimento biométrico. Para garantir a segurança do cofre, é essencial realizar o cadastro prévio dessas credenciais. Durante o acesso subsequente, o usuário deverá fornecer as informações corretas correspondentes a esses três métodos de autenticação para desbloquear com sucesso o cofre. Essa abordagem multifatorial visa oferecer uma camada adicional de segurança e flexibilidade no controle de acesso ao cofre, tornando-o ideal para ambientes que demandam alta segurança e praticidade no gerenciamento de credenciais.
 
 ### Dispositivos IoT utilizados:
 - **3 ESP32 Oled**
