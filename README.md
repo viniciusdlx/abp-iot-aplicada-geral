@@ -14,12 +14,12 @@
 - **Sensor Biométrico R502**
 - **Teclado Membrana Matricial 4×4 16 Teclas**
 - **Leitor RFID**
+- **4 Servo Motor 9G SG90**
 - **Botão** *(para indicar que o cofre foi fechado e as travas serão fechadas)*
-- **Servo Motor**
 
 ### Front-End:
 - Linguagem Typescript
-- React
+- Biblioteca React
 - Framework do React: NextJs
 - Framework de Estilização: TailwindCSS
 - Biblioteca de componentes: Material Tailwind
