@@ -15,6 +15,7 @@
 - **Teclado Membrana Matricial 4×4 16 Teclas**
 - **Leitor RFID**
 - **Botão** *(para indicar que o cofre foi fechado e as travas serão fechadas)*
+- **Servo Motor**
 
 ### Front-End:
 - Linguagem Typescript
