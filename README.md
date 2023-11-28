@@ -5,7 +5,7 @@
 ### Dispositivos IoT utilizados:
 - **3 ESP32 Oled** *(3 para abrir as travas e 1 para geral)*
 - **3 Leds RGB**
-  -  <font color="blue">azul</font> **cadastramento**,
+  -  <span style="color: blue;">azul</span> **cadastramento**,
   -  <font color="green">verde</font> **trava aberta**
   -  <font color="red">vermelho</font> **trava fechada***
 - **Sensor Biométrico R502**
