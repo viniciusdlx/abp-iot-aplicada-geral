@@ -94,13 +94,22 @@ export default function Listagem() {
 
                               switch (field6) {
                                 case "1":
-                                  etapa = "RFID";
+                                  etapa =
+                                    field5 === "N"
+                                      ? "Validando RFID"
+                                      : "Cadastrando RFID";
                                   break;
                                 case "2":
-                                  etapa = "Teclado";
+                                  etapa =
+                                    field5 === "N"
+                                      ? "Validando Teclado"
+                                      : "Cadastrando Teclado";
                                   break;
                                 case "3":
-                                  etapa = "Biometria";
+                                  etapa =
+                                    field5 === "N"
+                                      ? "Validando Biometria"
+                                      : "Cadastrando Biometria";
                                   break;
                                 default:
                                   break;
