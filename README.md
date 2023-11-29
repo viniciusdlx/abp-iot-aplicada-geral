@@ -24,4 +24,4 @@
 - Framework de Estilização: TailwindCSS
 - Biblioteca de componentes: Material Tailwind
 
-Link para acesso: https://abp-iot-aplicada-geral.vercel.app/
+Link para acesso: https://bank-security-system.vercel.app
