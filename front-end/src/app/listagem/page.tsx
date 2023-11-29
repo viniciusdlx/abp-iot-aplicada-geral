@@ -187,7 +187,7 @@ export default function Listagem() {
                 </>
               ) : (
                 <>
-                  <div className="flex justify-center items-center text-black">
+                  <div className="flex justify-center items-center text-black text-center">
                     Nenhum usuário cadastrado!
                   </div>
                 </>
