@@ -76,7 +76,7 @@ export default function CheckoutForm() {
           <Spinner />
         </Card>
       ) : (
-        <Card className="w-full px-24 py-4">
+        <Card className="w-full px-12 xl:px-24 py-4">
           <CardBody>
             <Link href="/listagem">
               <Button style={{ marginBottom: 18 }}>Listagem de usuários</Button>
@@ -86,16 +86,14 @@ export default function CheckoutForm() {
           <form className=" flex flex-col" onSubmit={handleSubmit(onSubmit)}>
             <div>
               <Typography
-                variant="h1"
                 color="blue-gray"
-                className="mb-2 font-medium"
+                className="text-3xl xl:text-6xl mb-2 font-medium"
               >
                 Olá {usuario}!
               </Typography>
               <Typography
-                variant="h1"
                 color="blue-gray"
-                className="mb-2 font-medium"
+                className="text-lg xl:text-6xl mb-2 font-medium"
               >
                 Está em modo de cadastro?
               </Typography>

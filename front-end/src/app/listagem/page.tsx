@@ -39,7 +39,7 @@ export default function Listagem() {
     <ThemeProvider>
       <main className="flex min-h-screen flex-col items-center justify-between p-12">
         <div className="z-10 max-w-[870px] w-full items-center justify-between font-mono text-sm lg:flex">
-          <Card className="w-full px-24 py-4">
+          <Card className="w-full xl:px-24 py-4">
             <CardBody>
               <Link href="/cadastro">
                 <Button style={{ marginBottom: 18 }}>
@@ -49,7 +49,7 @@ export default function Listagem() {
 
               {data.length >= 1 ? (
                 <>
-                  <Card className="h-full w-full">
+                  <Card className="h-full w-full overflow-scroll">
                     <table className="w-full min-w-max table-auto text-left">
                       <thead>
                         <tr>
