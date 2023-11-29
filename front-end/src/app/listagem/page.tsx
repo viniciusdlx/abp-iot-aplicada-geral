@@ -25,7 +25,10 @@ export default function Listagem() {
       .get(process.env.NEXT_PUBLIC_ROUTE_READ || "")
       .then((res: any) => {
         const length = res?.data?.feeds?.length;
-        setData([res?.data?.feeds[length - 1]]);
+
+        if (length >= 1) {
+          setData([res?.data?.feeds[length - 1]]);
+        }
       })
       .catch((err) => {
         console.log(err);
