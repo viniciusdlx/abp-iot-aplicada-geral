@@ -96,20 +96,20 @@ export default function Listagem() {
                                 case "1":
                                   etapa =
                                     field5 === "N"
-                                      ? "Validando RFID"
-                                      : "Cadastrando RFID";
+                                      ? "RFID Validado"
+                                      : "RFID Cadastrado";
                                   break;
                                 case "2":
                                   etapa =
                                     field5 === "N"
-                                      ? "Validando Teclado"
-                                      : "Cadastrando Teclado";
+                                      ? "Teclado Validado"
+                                      : "Teclado Cadastrado";
                                   break;
                                 case "3":
                                   etapa =
                                     field5 === "N"
-                                      ? "Validando Biometria"
-                                      : "Cadastrando Biometria";
+                                      ? "Biometria Validada"
+                                      : "Biometria Cadastrada";
                                   break;
                                 default:
                                   break;
